@@ -39,7 +39,7 @@ export default function GuestStories({
             </div>
           </div>
         </div>
-        <p className="text-gray-300 italic text-sm leading-relaxed">"{review}"</p>
+        <p className="text-gray-300 italic text-sm leading-relaxed">&ldquo;{review}&rdquo;</p>
       </div>
     </section>
   );
