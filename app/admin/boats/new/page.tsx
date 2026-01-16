@@ -109,8 +109,8 @@ export default function NewBoatPage() {
       return;
     }
 
-    if (!formData.title || !formData.max_capacity || !formData.price_per_hour) {
-      setError('Por favor, completa todos los campos requeridos');
+    if (!formData.title || !formData.max_capacity || !formData.price_per_hour || !formData.collection) {
+      setError('Por favor, completa todos los campos requeridos (título, capacidad, precio y colección)');
       return;
     }
 
@@ -133,6 +133,7 @@ export default function NewBoatPage() {
       }
 
       // Paso 2: Insertar bote en la base de datos con las rutas de las imágenes
+      console.log('[Admin] Attempting to insert boat into database...');
       const insertResult = await insertBoat({
         title: formData.title,
         mainImagePath: uploadResult.mainImagePath,
@@ -148,8 +149,12 @@ export default function NewBoatPage() {
         features,
       });
 
+      console.log('[Admin] Insert result:', insertResult);
+
       if (!insertResult.success || !insertResult.boatId) {
-        setError(insertResult.error || 'Error al insertar el bote');
+        const errorMessage = insertResult.error || 'Error al insertar el bote';
+        console.error('[Admin] Failed to insert boat:', errorMessage);
+        setError(errorMessage);
         setIsSubmitting(false);
         return;
       }

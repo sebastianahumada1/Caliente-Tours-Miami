@@ -24,6 +24,16 @@ export async function insertBoat(
   boatData: Omit<NewBoatData, 'main_image' | 'images'> & { mainImagePath: string; imagePaths: string[] }
 ): Promise<{ success: boolean; error?: string; boatId?: string }> {
   try {
+    console.log('[Admin] Inserting boat with data:', {
+      title: boatData.title,
+      mainImagePath: boatData.mainImagePath,
+      imagePaths: boatData.imagePaths,
+      max_capacity: boatData.max_capacity,
+      price_per_hour: boatData.price_per_hour,
+      pricing: boatData.pricing,
+      collection: boatData.collection,
+    });
+
     // Insertar en la base de datos con las rutas de Storage
     const { data, error } = await supabase
       .from('boats')
@@ -45,14 +55,28 @@ export async function insertBoat(
       .single();
 
     if (error) {
-      console.error('Error inserting boat:', error);
-      return { success: false, error: error.message };
+      console.error('[Admin] Error inserting boat:', error);
+      console.error('[Admin] Error details:', JSON.stringify(error, null, 2));
+      return { 
+        success: false, 
+        error: error.message || `Error: ${error.code || 'Unknown error'}` 
+      };
     }
 
+    if (!data || !data.id) {
+      console.error('[Admin] No data returned from insert');
+      return { success: false, error: 'No se recibió respuesta del servidor' };
+    }
+
+    console.log('[Admin] Boat inserted successfully with ID:', data.id);
     return { success: true, boatId: data.id };
   } catch (error: any) {
-    console.error('Error in insertBoat:', error);
-    return { success: false, error: error.message || 'Unknown error' };
+    console.error('[Admin] Exception in insertBoat:', error);
+    console.error('[Admin] Exception details:', JSON.stringify(error, null, 2));
+    return { 
+      success: false, 
+      error: error.message || 'Error desconocido al insertar el bote' 
+    };
   }
 }
 
