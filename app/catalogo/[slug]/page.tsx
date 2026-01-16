@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  // Obtener la imagen principal (la primera imagen del array)
-  const mainImage = boat.images[0] || '/images/placeholder.jpg';
+  // Obtener la imagen principal (main.jpg)
+  const mainImage = boat.mainImage || '/images/placeholder.jpg';
   
   // Crear URL absoluta para la imagen
   // Las imágenes de Supabase Storage ya son URLs absolutas
@@ -87,9 +87,9 @@ export default async function BoatDetailPage({ params }: PageProps) {
   return (
     <div className="relative min-h-screen">
       <SunsetBlur />
-      <BoatHero image={boat.images[0] || '/images/placeholder.jpg'} alt={boat.name} />
+      <BoatHero image={boat.mainImage || '/images/placeholder.jpg'} alt={boat.name} />
       <BoatTitle name={boat.name} />
-      <BoatGallery images={boat.images} name={boat.name} />
+      <BoatGallery images={boat.images} name={boat.name} catalogLink={boat.catalogLink} />
       <main className="px-6 mt-10 space-y-6 pb-32 relative z-10">
         <BoatCapacity capacity={boat.capacity} />
         <BoatPricing pricing={boat.pricing} basePrice={boat.price} />

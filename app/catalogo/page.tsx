@@ -31,7 +31,7 @@ export default async function CatalogoPage() {
               name={boat.name}
               type={boat.category}
               price={boat.price}
-              image={boat.images[0] || '/images/placeholder.jpg'}
+              image={boat.mainImage || '/images/placeholder.jpg'}
               length={boat.length}
               capacity={boat.capacity}
               badge={index === 0 ? 'Trending' : undefined}

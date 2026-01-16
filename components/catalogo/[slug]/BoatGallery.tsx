@@ -6,9 +6,10 @@ import Image from 'next/image';
 interface BoatGalleryProps {
   images: string[];
   name: string;
+  catalogLink?: string;
 }
 
-export default function BoatGallery({ images, name }: BoatGalleryProps) {
+export default function BoatGallery({ images, name, catalogLink }: BoatGalleryProps) {
   // Si solo hay una imagen, usar la misma para todas en la galería
   const galleryImages = images.length > 1 ? images : [images[0], images[0], images[0]];
   const displayedImages = galleryImages.slice(0, 3);
@@ -67,9 +68,20 @@ export default function BoatGallery({ images, name }: BoatGalleryProps) {
     <section className="mt-4">
       <div className="px-6 mb-3 flex justify-between items-end">
         <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Gallery</h2>
-        <button className="text-secondary text-[10px] font-black uppercase tracking-widest underline decoration-1 underline-offset-4 hover:text-secondary/80 transition-colors">
-          VIEW MORE PHOTOS
-        </button>
+        {catalogLink ? (
+          <a 
+            href={catalogLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-secondary text-[10px] font-black uppercase tracking-widest underline decoration-1 underline-offset-4 hover:text-secondary/80 transition-colors"
+          >
+            VIEW MORE PHOTOS
+          </a>
+        ) : (
+          <button className="text-secondary text-[10px] font-black uppercase tracking-widest underline decoration-1 underline-offset-4 hover:text-secondary/80 transition-colors cursor-not-allowed opacity-50">
+            VIEW MORE PHOTOS
+          </button>
+        )}
       </div>
       <div className="flex overflow-x-auto gap-3 px-6 hide-scrollbar pb-2 snap-x snap-mandatory">
           {displayedImages.map((image, index) => (
