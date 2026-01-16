@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import Header from '@/components/Header';
+import LogoutButton from './LogoutButton';
 
-export default function AdminPage() {
+export default async function AdminPage() {
   return (
     <div className="min-h-screen pb-20">
-      <Header />
       <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold italic uppercase tracking-tighter mb-2">
@@ -60,6 +59,10 @@ export default function AdminPage() {
               Ver todos los botes en el catálogo público
             </p>
           </Link>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <LogoutButton />
         </div>
       </main>
     </div>

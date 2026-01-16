@@ -1,0 +1,57 @@
+-- ============================================
+-- CREAR USUARIO ADMINISTRADOR (MÉTODO SIMPLE)
+-- ============================================
+-- 
+-- IMPORTANTE: 
+-- Este script NO funciona directamente en SQL Editor porque Supabase Auth
+-- no permite crear usuarios directamente en la tabla auth.users.
+--
+-- MÉTODO RECOMENDADO: Usar el Dashboard de Supabase
+-- ============================================
+--
+-- INSTRUCCIONES PASO A PASO:
+-- ============================================
+--
+-- 1. Ve a tu proyecto en Supabase Dashboard
+-- 2. Ve a: Authentication > Users (en el menú lateral)
+-- 3. Haz clic en el botón "Add User" (arriba a la derecha)
+-- 4. Selecciona "Create new user" (si aparece la opción)
+-- 5. Completa el formulario:
+--    - Email: calientetours.miami
+--    - Password: milo1974
+--    - Auto Confirm User: ✅ (ACTIVA esta opción - es muy importante)
+-- 6. Haz clic en "Create User"
+--
+-- ============================================
+-- ALTERNATIVA: Usar la API de Auth de Supabase
+-- ============================================
+-- Si prefieres usar código, puedes ejecutar esto en la consola del navegador
+-- mientras estás en el Dashboard de Supabase:
+--
+-- fetch('https://[TU-PROJECT-REF].supabase.co/auth/v1/admin/users', {
+--   method: 'POST',
+--   headers: {
+--     'apikey': '[TU-SERVICE-ROLE-KEY]',
+--     'Authorization': 'Bearer [TU-SERVICE-ROLE-KEY]',
+--     'Content-Type': 'application/json'
+--   },
+--   body: JSON.stringify({
+--     email: 'calientetours.miami',
+--     password: 'milo1974',
+--     email_confirm: true,
+--     user_metadata: {}
+--   })
+-- })
+-- .then(r => r.json())
+-- .then(console.log);
+--
+-- ============================================
+-- VERIFICAR QUE EL USUARIO SE CREÓ
+-- ============================================
+-- Después de crear el usuario, puedes verificar ejecutando:
+--
+-- SELECT id, email, email_confirmed_at, created_at
+-- FROM auth.users
+-- WHERE email = 'calientetours.miami';
+--
+-- O simplemente ve a Authentication > Users y busca el email.

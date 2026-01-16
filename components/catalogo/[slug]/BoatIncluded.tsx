@@ -1,8 +1,8 @@
 export default function BoatIncluded() {
   const includedItems = [
-    { en: 'Captain', es: 'capitan', icon: 'sailing' },
+    { en: 'Captain fees', es: 'pagos del capitan', icon: 'sailing' },
     { en: 'Steward', es: 'asistente', note: '(large boats)', icon: 'room_service' },
-    { en: 'Fuel', es: 'gasolina', icon: 'local_gas_station' },
+    { en: 'Fuel fee', es: 'gastos de gasolina', icon: 'local_gas_station' },
     { en: 'Dock fee', es: 'gastos de muelle', icon: 'anchor' },
     { en: 'Cooler with ice', es: 'nevera con hielo', icon: 'kitchen' },
     { en: 'Large water mat', es: 'alfombra flotante', icon: 'surfing' },

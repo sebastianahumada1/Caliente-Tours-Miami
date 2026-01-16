@@ -35,7 +35,7 @@ export default function CatalogBoatCard({
   opacity = 1,
 }: CatalogBoatCardProps) {
   return (
-    <Link href={`/catalogo/${slug}`} className="block">
+    <Link href={`/catalogo/${slug}`} className="block w-full max-w-3xl mx-auto">
       <div
         className="group relative bg-surface/40 rounded-3xl overflow-hidden border border-white/10 neon-glow-card hover:border-secondary/30 transition-all"
         style={{ opacity }}

@@ -5,7 +5,6 @@ import { useRouter, useParams } from 'next/navigation';
 import { getBoatBySlug, getAllBoats } from '@/lib/boats';
 import { updateBoat, uploadBoatImages } from '@/lib/admin';
 import { Pricing, Boat } from '@/types/database';
-import Header from '@/components/Header';
 
 export default function EditBoatPage() {
   const router = useRouter();
@@ -197,17 +196,23 @@ export default function EditBoatPage() {
       let imagePaths: string[] | undefined = undefined;
 
       // Si hay nuevas imágenes, subirlas
+      // Usar el slug existente del bote para mantener la misma carpeta
       if (mainImage || additionalImages.length > 0) {
-        const uploadResult = await uploadBoatImages(formData.title, mainImage || new File([], 'placeholder'), additionalImages);
+        const uploadResult = await uploadBoatImages(boat.slug, mainImage || null, additionalImages);
 
-        if (!uploadResult.success || !uploadResult.mainImagePath) {
+        if (!uploadResult.success) {
           setError(uploadResult.error || 'Error al subir las imágenes');
           setIsSubmitting(false);
           return;
         }
 
-        mainImagePath = uploadResult.mainImagePath;
-        imagePaths = uploadResult.imagePaths;
+        // Solo actualizar las rutas si se subieron nuevas imágenes
+        if (uploadResult.mainImagePath) {
+          mainImagePath = uploadResult.mainImagePath;
+        }
+        if (uploadResult.imagePaths && uploadResult.imagePaths.length > 0) {
+          imagePaths = uploadResult.imagePaths;
+        }
       }
 
       // Actualizar bote en la base de datos
@@ -247,7 +252,6 @@ export default function EditBoatPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen pb-20">
-        <Header />
         <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="text-center py-12">
             <p className="text-gray-400">Cargando bote...</p>
@@ -260,7 +264,6 @@ export default function EditBoatPage() {
   if (!boat) {
     return (
       <div className="min-h-screen pb-20">
-        <Header />
         <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="text-center py-12">
             <p className="text-red-400">Bote no encontrado</p>
@@ -278,7 +281,6 @@ export default function EditBoatPage() {
 
   return (
     <div className="min-h-screen pb-20">
-      <Header />
       <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold italic uppercase tracking-tighter mb-2">

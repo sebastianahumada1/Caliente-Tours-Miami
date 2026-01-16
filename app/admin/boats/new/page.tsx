@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { insertBoat, uploadBoatImages, NewBoatData } from '@/lib/admin';
 import { Pricing } from '@/types/database';
-import Header from '@/components/Header';
+import { generateSlug } from '@/lib/utils';
 
 export default function NewBoatPage() {
   const router = useRouter();
@@ -124,7 +124,8 @@ export default function NewBoatPage() {
         .filter(f => f.length > 0);
 
       // Paso 1: Subir imágenes a Storage primero
-      const uploadResult = await uploadBoatImages(formData.title, mainImage, additionalImages);
+      const folderName = generateSlug(formData.title).toLowerCase().replace(/\s+/g, '-');
+      const uploadResult = await uploadBoatImages(folderName, mainImage, additionalImages);
 
       if (!uploadResult.success || !uploadResult.mainImagePath) {
         setError(uploadResult.error || 'Error al subir las imágenes');
@@ -173,7 +174,6 @@ export default function NewBoatPage() {
 
   return (
     <div className="min-h-screen pb-20">
-      <Header />
       <main className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold italic uppercase tracking-tighter mb-2">

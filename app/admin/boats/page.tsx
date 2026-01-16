@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Header from '@/components/Header';
 import { getAllBoats } from '@/lib/boats';
 import Image from 'next/image';
 
@@ -8,7 +7,6 @@ export default async function BoatsListPage() {
 
   return (
     <div className="min-h-screen pb-20">
-      <Header />
       <main className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold italic uppercase tracking-tighter mb-2">

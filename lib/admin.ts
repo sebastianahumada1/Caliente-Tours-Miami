@@ -83,37 +83,39 @@ export async function insertBoat(
 /**
  * Sube las imágenes de un bote a Storage y retorna las rutas
  * Las rutas retornadas son relativas al bucket (sin prefijo boat-images/)
+ * @param folderName - Nombre de la carpeta (slug) donde guardar las imágenes
+ * @param mainImage - Archivo de imagen principal (opcional para actualizaciones)
+ * @param additionalImages - Array de imágenes adicionales
  */
 export async function uploadBoatImages(
-  title: string,
-  mainImage: File,
-  additionalImages: File[]
+  folderName: string,
+  mainImage?: File | null,
+  additionalImages: File[] = []
 ): Promise<{ success: boolean; error?: string; mainImagePath?: string; imagePaths?: string[] }> {
   try {
-    const folderName = generateSlug(title).toLowerCase().replace(/\s+/g, '-');
     const bucket = 'boat-images';
-
-    // Subir imagen principal
-    // La ruta es relativa al bucket: "26-pink-bayliner/main.jpg"
     const mainImagePath = `${folderName}/main.jpg`;
-    const { error: mainError } = await supabase.storage
-      .from(bucket)
-      .upload(mainImagePath, mainImage, {
-        cacheControl: '3600',
-        upsert: true,
-      });
+    const imagePaths: string[] = [];
 
-    if (mainError) {
-      console.error('[Admin] Error uploading main image:', mainError);
-      return { success: false, error: `Error uploading main image: ${mainError.message}` };
+    // Subir imagen principal solo si se proporciona
+    if (mainImage && mainImage.size > 0) {
+      const { error: mainError } = await supabase.storage
+        .from(bucket)
+        .upload(mainImagePath, mainImage, {
+          cacheControl: '3600',
+          upsert: true,
+        });
+
+      if (mainError) {
+        console.error('[Admin] Error uploading main image:', mainError);
+        return { success: false, error: `Error uploading main image: ${mainError.message}` };
+      }
+
+      console.log('[Admin] Main image uploaded to:', mainImagePath);
     }
 
-    console.log('[Admin] Main image uploaded to:', mainImagePath);
-
     // Subir imágenes adicionales
-    const imagePaths: string[] = [];
     for (let i = 0; i < additionalImages.length; i++) {
-      // La ruta es relativa al bucket: "26-pink-bayliner/1.jpg"
       const imagePath = `${folderName}/${i + 1}.jpg`;
       const { error: imageError } = await supabase.storage
         .from(bucket)
@@ -128,16 +130,21 @@ export async function uploadBoatImages(
       }
 
       console.log(`[Admin] Additional image ${i + 1} uploaded to:`, imagePath);
-      // Guardar la ruta relativa (sin prefijo boat-images/)
       imagePaths.push(imagePath);
     }
 
-    // Retornar rutas relativas al bucket (sin prefijo boat-images/)
-    // Estas rutas se guardan así en la base de datos
+    // Si se subió una nueva imagen principal, usarla; si no, retornar la ruta existente
+    const finalMainImagePath = mainImage && mainImage.size > 0 ? mainImagePath : undefined;
+    
+    // Si hay imágenes adicionales, usarlas; si no, usar solo la principal si existe
+    const finalImagePaths = imagePaths.length > 0 
+      ? imagePaths 
+      : (finalMainImagePath ? [finalMainImagePath] : undefined);
+
     return {
       success: true,
-      mainImagePath: mainImagePath, // "26-pink-bayliner/main.jpg"
-      imagePaths: imagePaths.length > 0 ? imagePaths : [mainImagePath],
+      mainImagePath: finalMainImagePath,
+      imagePaths: finalImagePaths,
     };
   } catch (error: any) {
     console.error('[Admin] Error in uploadBoatImages:', error);
@@ -153,6 +160,14 @@ export async function updateBoat(
   boatData: Omit<NewBoatData, 'main_image' | 'images'> & { mainImagePath?: string; imagePaths?: string[] }
 ): Promise<{ success: boolean; error?: string }> {
   try {
+    console.log('[Admin] Updating boat:', boatId, {
+      title: boatData.title,
+      hasMainImage: !!boatData.mainImagePath,
+      hasImagePaths: !!boatData.imagePaths,
+      mainImagePath: boatData.mainImagePath,
+      imagePaths: boatData.imagePaths,
+    });
+
     const updateData: any = {
       title: boatData.title,
       max_capacity: boatData.max_capacity,
@@ -169,24 +184,29 @@ export async function updateBoat(
     // Solo actualizar las imágenes si se proporcionaron nuevas rutas
     if (boatData.mainImagePath) {
       updateData.main_image = boatData.mainImagePath;
+      console.log('[Admin] Updating main_image to:', boatData.mainImagePath);
     }
-    if (boatData.imagePaths) {
+    if (boatData.imagePaths && boatData.imagePaths.length > 0) {
       updateData.images = boatData.imagePaths;
+      console.log('[Admin] Updating images to:', boatData.imagePaths);
     }
 
-    const { error } = await supabase
+    const { error, data } = await supabase
       .from('boats')
       .update(updateData)
-      .eq('id', boatId);
+      .eq('id', boatId)
+      .select();
 
     if (error) {
-      console.error('Error updating boat:', error);
+      console.error('[Admin] Error updating boat:', error);
+      console.error('[Admin] Error details:', JSON.stringify(error, null, 2));
       return { success: false, error: error.message };
     }
 
+    console.log('[Admin] Boat updated successfully');
     return { success: true };
   } catch (error: any) {
-    console.error('Error in updateBoat:', error);
+    console.error('[Admin] Exception in updateBoat:', error);
     return { success: false, error: error.message || 'Unknown error' };
   }
 }
