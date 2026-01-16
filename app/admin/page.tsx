@@ -32,17 +32,32 @@ export default function AdminPage() {
           </Link>
 
           <Link
-            href="/catalogo"
+            href="/admin/boats"
             className="bg-surface/40 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-secondary/30 transition-all group"
           >
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <div className="size-10 sm:size-12 rounded-xl bg-secondary/20 flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
-                <span className="material-symbols-outlined text-secondary text-xl sm:text-2xl">view_list</span>
+                <span className="material-symbols-outlined text-secondary text-xl sm:text-2xl">edit</span>
+              </div>
+              <h2 className="text-lg sm:text-xl font-bold">Editar Botes</h2>
+            </div>
+            <p className="text-gray-400 text-xs sm:text-sm">
+              Ver y editar todos los botes existentes
+            </p>
+          </Link>
+
+          <Link
+            href="/catalogo"
+            className="bg-surface/40 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-secondary/30 transition-all group"
+          >
+            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div className="size-10 sm:size-12 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                <span className="material-symbols-outlined text-primary text-xl sm:text-2xl">view_list</span>
               </div>
               <h2 className="text-lg sm:text-xl font-bold">Ver Catálogo</h2>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm">
-              Ver todos los botes en el catálogo
+              Ver todos los botes en el catálogo público
             </p>
           </Link>
         </div>

@@ -112,3 +112,49 @@ export async function uploadBoatImages(
     return { success: false, error: error.message || 'Unknown error' };
   }
 }
+
+/**
+ * Actualiza un bote existente en la base de datos
+ */
+export async function updateBoat(
+  boatId: string,
+  boatData: Omit<NewBoatData, 'main_image' | 'images'> & { mainImagePath?: string; imagePaths?: string[] }
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const updateData: any = {
+      title: boatData.title,
+      max_capacity: boatData.max_capacity,
+      price_per_hour: boatData.price_per_hour,
+      pricing: boatData.pricing,
+      catalog_link: boatData.catalog_link || null,
+      category: boatData.category || null,
+      collection: boatData.collection || null,
+      length: boatData.length || null,
+      description: boatData.description || null,
+      features: boatData.features || [],
+    };
+
+    // Solo actualizar las imágenes si se proporcionaron nuevas rutas
+    if (boatData.mainImagePath) {
+      updateData.main_image = boatData.mainImagePath;
+    }
+    if (boatData.imagePaths) {
+      updateData.images = boatData.imagePaths;
+    }
+
+    const { error } = await supabase
+      .from('boats')
+      .update(updateData)
+      .eq('id', boatId);
+
+    if (error) {
+      console.error('Error updating boat:', error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (error: any) {
+    console.error('Error in updateBoat:', error);
+    return { success: false, error: error.message || 'Unknown error' };
+  }
+}
