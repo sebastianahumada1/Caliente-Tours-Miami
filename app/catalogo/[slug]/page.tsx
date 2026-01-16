@@ -9,6 +9,10 @@ import BoatPricing from '@/components/catalogo/[slug]/BoatPricing';
 import BoatIncluded from '@/components/catalogo/[slug]/BoatIncluded';
 import BoatExperience from '@/components/catalogo/[slug]/BoatExperience';
 
+// Forzar renderizado dinámico (no usar cache estático)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

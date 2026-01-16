@@ -4,19 +4,22 @@ import { DatabaseBoat, Boat, mapDatabaseBoatToBoat } from '@/types/database';
 // Obtener todos los botes desde Supabase
 export async function getAllBoats(): Promise<Boat[]> {
   try {
+    console.log('[Boats] Fetching all boats from Supabase...');
     const { data, error } = await supabase
       .from('boats')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching boats:', error);
+      console.error('[Boats] Error fetching boats:', error);
       return [];
     }
 
-    return (data || []).map(mapDatabaseBoatToBoat);
+    const boats = (data || []).map(mapDatabaseBoatToBoat);
+    console.log(`[Boats] Fetched ${boats.length} boats`);
+    return boats;
   } catch (error) {
-    console.error('Error in getAllBoats:', error);
+    console.error('[Boats] Error in getAllBoats:', error);
     return [];
   }
 }
@@ -98,6 +101,7 @@ export async function getBoatsByCategory(category: string): Promise<Boat[]> {
 // Obtener botes por colección
 export async function getBoatsByCollection(collection: string): Promise<Boat[]> {
   try {
+    console.log(`[Boats] Fetching boats for collection: ${collection}`);
     const { data, error } = await supabase
       .from('boats')
       .select('*')
@@ -105,13 +109,15 @@ export async function getBoatsByCollection(collection: string): Promise<Boat[]> 
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching boats by collection:', error);
+      console.error(`[Boats] Error fetching boats by collection (${collection}):`, error);
       return [];
     }
 
-    return (data || []).map(mapDatabaseBoatToBoat);
+    const boats = (data || []).map(mapDatabaseBoatToBoat);
+    console.log(`[Boats] Found ${boats.length} boats in collection: ${collection}`);
+    return boats;
   } catch (error) {
-    console.error('Error in getBoatsByCollection:', error);
+    console.error(`[Boats] Error in getBoatsByCollection (${collection}):`, error);
     return [];
   }
 }

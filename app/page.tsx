@@ -5,6 +5,10 @@ import CollectionSection from '@/components/CollectionSection';
 import GuestStories from '@/components/GuestStories';
 import { getAllBoats, getBoatsByCollection } from '@/lib/boats';
 
+// Forzar renderizado dinámico (no usar cache estático)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   // Obtener botes por colección desde la base de datos
   const [pinkCollection, flybridgeBoats, allBoats] = await Promise.all([
