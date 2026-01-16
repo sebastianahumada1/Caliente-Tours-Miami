@@ -3,8 +3,8 @@ import Image from 'next/image';
 export default function Header() {
   return (
     <header className="relative z-20 p-4 sm:p-6 pt-12 sm:pt-14">
-      <div className="flex items-center justify-start mb-4 sm:mb-6">
-        <div className="flex flex-col items-start gap-3 sm:gap-4">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div className="flex flex-col items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="relative flex-shrink-0">
             <Image
               src="/logo-transparent.png"
@@ -20,12 +20,12 @@ export default function Header() {
             MIAMI YACHT RENTALS
           </h2>
         </div>
-      </div>
-      <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">
-        <span className="material-symbols-outlined text-secondary text-lg sm:text-xl">verified_user</span>
-        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-secondary">
-          Licensed Broker
-        </span>
+        <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">
+          <span className="material-symbols-outlined text-secondary text-lg sm:text-xl">verified_user</span>
+          <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-secondary">
+            Licensed Broker
+          </span>
+        </div>
       </div>
     </header>
   );

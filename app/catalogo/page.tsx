@@ -17,7 +17,7 @@ export default async function CatalogoPage() {
       <SunsetBlur />
       <CatalogHeader title="All Fleet" />
       <CatalogFilters />
-      <main className="relative z-10 px-6 pb-32 space-y-8 mt-4">
+      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 space-y-8 mt-4">
         {boats.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-400 text-lg">No hay botes disponibles en este momento.</p>

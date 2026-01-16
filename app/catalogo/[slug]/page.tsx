@@ -90,7 +90,7 @@ export default async function BoatDetailPage({ params }: PageProps) {
       <BoatHero image={boat.mainImage || '/images/placeholder.jpg'} alt={boat.name} />
       <BoatTitle name={boat.name} />
       <BoatGallery images={boat.images} name={boat.name} catalogLink={boat.catalogLink} />
-      <main className="px-6 mt-10 space-y-6 pb-32 relative z-10">
+      <main className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-6 pb-32 relative z-10">
         <BoatCapacity capacity={boat.capacity} />
         <BoatPricing pricing={boat.pricing} basePrice={boat.price} />
         <BoatIncluded />

@@ -12,7 +12,7 @@ export default function CatalogHeader({ title = 'All Fleet' }: CatalogHeaderProp
 
   return (
     <header className="relative z-30 p-6 pt-14 bg-background-dark/80 backdrop-blur-lg sticky top-0 border-b border-white/5">
-      <div className="flex items-center gap-4">
+      <div className="w-full max-w-7xl mx-auto flex items-center gap-4">
         <button
           onClick={() => router.back()}
           className="size-10 flex items-center justify-center rounded-full bg-white/5 active:bg-white/10 transition-colors"

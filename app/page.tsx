@@ -17,7 +17,7 @@ export default async function Home() {
     <>
       <SunsetBlur />
       <Header />
-      <main className="relative z-10 px-4 pb-32">
+      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
         <LiveStatus />
         <CollectionSection 
           title="PINK COLLECTION" 
