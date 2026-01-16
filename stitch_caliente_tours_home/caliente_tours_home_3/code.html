@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff00ff",
+                        "secondary": "#00ffff",
+                        "background-light": "#f9fafb",
+                        "background-dark": "#0a0a1a",
+                        "deep-midnight": "#0a0a1a",
+                        "indigo-under": "#12122b",
+                        "surface": "#161633",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --midnight-purple: #0a0a1a;
+            --indigo-tone: #12122b;
+        }
+        .neon-glow-pink { box-shadow: 0 0 15px rgba(255, 0, 255, 0.4); }
+        .neon-glow-cyan { box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .sunset-gradient { background: linear-gradient(180deg, #ff8c00 0%, #ff00ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-sunset-blur { background: linear-gradient(180deg, rgba(255, 140, 0, 0.12) 0%, rgba(255, 0, 255, 0.08) 50%, transparent 100%); }
+        body {
+            background: linear-gradient(135deg, var(--midnight-purple) 0%, var(--indigo-tone) 100%);
+            min-height: 100dvh;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-white min-h-screen overflow-x-hidden">
+<div class="fixed top-0 left-0 w-full h-[400px] bg-sunset-blur pointer-events-none"></div>
+<header class="relative z-20 p-6 pt-14">
+<div class="flex items-center justify-between mb-6">
+<div class="flex flex-col">
+<h1 class="text-5xl font-extrabold tracking-tighter italic uppercase sunset-gradient leading-none">
+                Caliente
+            </h1>
+<h2 class="text-2xl font-bold tracking-[0.3em] uppercase text-white -mt-1 opacity-95">
+                Tours
+            </h2>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 px-4 py-2 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary text-xl">verified_user</span>
+<span class="text-[11px] font-bold uppercase tracking-widest text-secondary">Licensed Broker &amp; Verified Captains</span>
+</div>
+</header>
+<main class="relative z-10 px-4 pb-32">
+<div class="flex items-center gap-2 px-2 mb-8">
+<span class="flex h-2.5 w-2.5 rounded-full bg-secondary animate-pulse shadow-[0_0_10px_#00ffff]"></span>
+<p class="text-[11px] font-bold tracking-[0.25em] uppercase text-secondary/80">Live from Miami • 82°F • Smooth Seas</p>
+</div>
+<section class="mb-12">
+<div class="flex items-center justify-between px-2 mb-6">
+<h3 class="text-2xl font-bold italic uppercase tracking-tighter">Featured Fleet</h3>
+<button class="text-secondary text-xs font-bold uppercase tracking-widest border-b border-secondary/30 pb-1">View All</button>
+</div>
+<div class="flex gap-5 overflow-x-auto pb-6 scrollbar-hide snap-x px-2">
+<div class="min-w-[280px] snap-center">
+<div class="relative h-[380px] rounded-xl overflow-hidden border border-white/10 group neon-glow-pink">
+<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-black px-2 py-1 rounded uppercase">Hot Deal</div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">80ft Van Dutch</p>
+<h4 class="text-2xl font-bold leading-tight mb-3">Midnight Pearl</h4>
+<div class="flex items-center justify-between">
+<p class="text-lg font-bold">$1,200 <span class="text-xs font-normal text-gray-400">/hr</span></p>
+<button class="size-10 rounded-full bg-white text-black flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="min-w-[280px] snap-center">
+<div class="relative h-[380px] rounded-xl overflow-hidden border border-white/10 group opacity-70">
+<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXYHTKPuaOWQmuZn7oPKy0cN8nAHlPzhn8lyClP5q8QdzFE3a4au05d_1YWx_mCDgb1aOtHrS7nWKLpA6NqlqIWu8t6wYfPnC_gn3yhrMP_1t3QnPJLTqLf5BX2yekJBx4tg6P5snor9LCYpe5uK8JH7GSqOlW6eSrXiOEzjO0Ve71_hi7Be6SLFbesRHwGZAI5Vbmx1uuRgeHgbUqalj0i5Qk0qllzZMpC_BmpXfTPCEWBHS6aDLZTFanBNEEAeTgLdneJSRm4g");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">65ft Lagoon</p>
+<h4 class="text-2xl font-bold leading-tight mb-3">Neon Wave</h4>
+<div class="flex items-center justify-between">
+<p class="text-lg font-bold">$850 <span class="text-xs font-normal text-gray-400">/hr</span></p>
+<button class="size-10 rounded-full bg-white text-black flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-12">
+<h3 class="text-xl font-bold italic uppercase tracking-tighter px-2 mb-6">Exclusive Experiences</h3>
+<div class="grid grid-cols-2 gap-4 px-2">
+<div class="flex flex-col gap-3">
+<div class="w-full aspect-square rounded-full overflow-hidden border-2 border-primary/30 p-1">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuEclvVnvKZGz-QjuI4C22JAPFtd7Z1NXH0_eOVGKcSG4iiexXWyRMRFqIB7aB9GYaTL7kBWspQd9COILmZ6cmEUWRhnDPuGoEkTNe0CCS8H_l2EbmS-ODFR14bLLdnr8QlfkcOIO84BqmPOnrPCU_rT25XGnB-UzBD1_LOzaMAWET5lx3GxU3fhv1m_Rayunus8bSNLJx_GvIhHBBGDTeII2un1RH2eqyALUS127bDs_WNlu04wwjVVtGSN5E2X6e3qkRsjIDyg");'></div>
+</div>
+<div class="text-center">
+<h5 class="font-bold text-sm tracking-tight text-white">Sandbar Soirée</h5>
+<p class="text-[10px] text-gray-400 uppercase tracking-widest">Day Party</p>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="w-full aspect-square rounded-full overflow-hidden border-2 border-secondary/30 p-1">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAg_qm1Chqi3b48qQvy1bnEHlpztVTtXq7LkgIVgiVPh70DkKvvhW3YvAv_JTG_0D9EDNdra-3QG4eZzzk9Rnengh-rGlz1GTvbmU74EycluMMt3dn3_28otsRaI1AQBXPiTqJ5xpEkLMdjd4AjHdf3uDPOXdkW4JUruSvgTXgRUWUamIy-E4wKD5haBheYFd10pb0l2jGL0IsBsrpwVlSoClw8vcT1ddKVlTJBidMcQHygv7mtTgdYT6OxjK9jmZs6cODAeDiQOw");'></div>
+</div>
+<div class="text-center">
+<h5 class="font-bold text-sm tracking-tight text-white">Skyline Dinner</h5>
+<p class="text-[10px] text-gray-400 uppercase tracking-widest">Golden Hour</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-12 px-2">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold italic uppercase tracking-tighter">Guest Stories</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-sm fill-current">star</span>
+<span class="text-sm font-bold">4.9/5</span>
+</div>
+</div>
+<div class="bg-surface/40 border border-white/5 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">format_quote</span>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="size-10 rounded-full bg-gradient-to-tr from-primary to-secondary p-[2px]">
+<div class="w-full h-full rounded-full bg-indigo-under flex items-center justify-center font-bold text-xs text-white">AM</div>
+</div>
+<div>
+<p class="text-sm font-bold">Alex M.</p>
+<div class="flex text-[10px] text-yellow-400">
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+<span class="material-symbols-outlined text-[12px] fill-current">star</span>
+</div>
+</div>
+</div>
+<p class="text-gray-300 italic text-sm leading-relaxed">"Best night in Miami! The service was impeccable and the yacht was absolutely stunning. Highly recommend for any luxury event."</p>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-background-dark/95 backdrop-blur-2xl border-t border-white/5 flex items-center justify-around px-6 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[28px] drop-shadow-[0_0_8px_rgba(255,0,255,0.8)]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">directions_boat</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Fleet</span>
+</button>
+<button class="size-14 bg-primary rounded-full -mt-10 border-4 border-[#0a0a1a] flex items-center justify-center neon-glow-pink">
+<span class="material-symbols-outlined text-white text-[32px]">search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">confirmation_number</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Trips</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</button>
+</nav>
+
+</body></html>

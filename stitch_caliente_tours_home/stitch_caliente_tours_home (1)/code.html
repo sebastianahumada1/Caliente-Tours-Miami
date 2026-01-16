@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff00ff",
+                        "secondary": "#00ffff",
+                        "background-dark": "#0a0a1a",
+                        "deep-midnight": "#0a0a1a",
+                        "indigo-under": "#12122b",
+                        "surface": "#161633",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --midnight-purple: #0a0a1a;
+            --indigo-tone: #12122b;
+        }
+        .neon-glow-pink { box-shadow: 0 0 15px rgba(255, 0, 255, 0.3); }
+        .neon-glow-cyan { box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); }
+        .sunset-gradient-bg { background: linear-gradient(90deg, #ff8c00 0%, #ff00ff 100%); }
+        body {
+            background: var(--midnight-purple);
+            min-height: 100dvh;
+        }
+        .yacht-title {
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-white min-h-screen overflow-x-hidden pb-12">
+<div class="relative h-[28vh] w-full">
+<img alt="55’ PINK FLYBRIGDE" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-black/20"></div>
+<div class="absolute top-12 left-6">
+<button class="size-10 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-xl leading-none">arrow_back_ios_new</span>
+</button>
+</div>
+</div>
+<div class="px-6 pt-4 pb-2 text-center">
+<h1 class="yacht-title text-3xl uppercase tracking-tighter leading-tight text-white italic">
+            55’ PINK FLYBRIGDE
+        </h1>
+</div>
+<section class="mt-4">
+<div class="px-6 mb-3 flex justify-between items-end">
+<h2 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Gallery</h2>
+<button class="text-secondary text-[10px] font-black uppercase tracking-widest underline decoration-1 underline-offset-4">
+                VIEW MORE PHOTOS
+            </button>
+</div>
+<div class="flex overflow-x-auto gap-3 px-6 hide-scrollbar">
+<div class="flex-none w-64 h-40 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+<img alt="Gallery 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA"/>
+</div>
+<div class="flex-none w-64 h-40 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+<img alt="Gallery 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA"/>
+</div>
+<div class="flex-none w-64 h-40 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+<img alt="Gallery 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA"/>
+</div>
+</div>
+</section>
+<main class="px-6 mt-10 space-y-6">
+<section>
+<div class="bg-surface border border-white/10 rounded-2xl p-6 neon-glow-cyan">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-secondary text-2xl">group</span>
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-secondary">Max Capacity</h2>
+</div>
+<p class="text-xl font-bold text-white mb-2">13 People <span class="text-sm font-medium text-gray-400">(Adults &amp; Children)</span></p>
+<p class="text-[10px] font-medium text-gray-500 uppercase tracking-wider leading-relaxed">
+                    Regulated under the Passenger Vessel Safety Act of 1993
+                </p>
+</div>
+</section>
+<section>
+<div class="bg-surface border border-white/10 rounded-2xl p-6 neon-glow-pink">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-2xl">payments</span>
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-primary">Pricing</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col border-b border-white/5 pb-2">
+<span class="text-xs font-medium text-gray-400 uppercase">2 Hours</span>
+<span class="text-xl font-black text-white">$900</span>
+</div>
+<div class="flex flex-col border-b border-white/5 pb-2">
+<span class="text-xs font-medium text-gray-400 uppercase">3 Hours</span>
+<span class="text-xl font-black text-white">$1,250</span>
+</div>
+<div class="flex flex-col border-b border-white/5 pb-2">
+<span class="text-xs font-medium text-gray-400 uppercase">4 Hours</span>
+<span class="text-xl font-black text-white">$1,500</span>
+</div>
+<div class="flex flex-col border-b border-white/5 pb-2">
+<span class="text-xs font-medium text-gray-400 uppercase">6 Hours</span>
+<span class="text-xl font-black text-white">$2,100</span>
+</div>
+<div class="flex flex-col col-span-2 pt-2">
+<span class="text-xs font-medium text-gray-400 uppercase">8 Hours</span>
+<span class="text-xl font-black text-white">$2,700</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-indigo-under/40 rounded-2xl p-6 border border-white/5">
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-secondary mb-6">Included</h2>
+<div class="grid grid-cols-4 gap-4 text-center">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-xl bg-surface flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-2xl">kitchen</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tight">Ice</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-xl bg-surface flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined text-2xl">bluetooth</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tight">Bluetooth</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-xl bg-surface flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-2xl">surfing</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tight">Water Mat</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-xl bg-surface flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined text-2xl">anchor</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-tight">Captain</span>
+</div>
+</div>
+</section>
+<section class="pb-10">
+<h2 class="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-4 pl-1">The Experience</h2>
+<p class="text-gray-400 text-sm leading-relaxed font-medium">
+                The most iconic pink luxury yacht in Miami. Featuring a spacious flybridge, premium sound systems, and a chic interior perfect for high-end celebrations on the water.
+            </p>
+</section>
+</main>
+
+</body></html>

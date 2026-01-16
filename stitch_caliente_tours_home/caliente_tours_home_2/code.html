@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff00ff",
+                        "secondary": "#00ffff",
+                        "background-light": "#f9fafb",
+                        "background-dark": "#0a0a1a",
+                        "deep-midnight": "#0a0a1a",
+                        "indigo-under": "#12122b",
+                        "surface": "#161633",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --midnight-purple: #0a0a1a;
+            --indigo-tone: #12122b;
+        }
+        .neon-glow-pink { box-shadow: 0 0 15px rgba(255, 0, 255, 0.4); }
+        .neon-glow-cyan { box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .neon-glow-card { box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); }
+        .sunset-gradient { background: linear-gradient(180deg, #ff8c00 0%, #ff00ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-sunset-blur { background: linear-gradient(180deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 0, 255, 0.05) 50%, transparent 100%); }
+        body {
+            background: linear-gradient(135deg, var(--midnight-purple) 0%, var(--indigo-tone) 100%);
+            min-height: 100dvh;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-white min-h-screen overflow-x-hidden">
+<div class="fixed top-0 left-0 w-full h-[400px] bg-sunset-blur pointer-events-none"></div>
+<header class="relative z-30 p-6 pt-14 bg-background-dark/80 backdrop-blur-lg sticky top-0 border-b border-white/5">
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-full bg-white/5 active:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">arrow_back_ios_new</span>
+</button>
+<h1 class="text-3xl font-extrabold tracking-tighter italic uppercase sunset-gradient leading-none">
+            All Fleet
+        </h1>
+</div>
+</header>
+<div class="relative z-20 px-6 py-4 flex gap-3 overflow-x-auto scrollbar-hide whitespace-nowrap">
+<button class="px-5 py-2 rounded-full border border-secondary bg-secondary/10 text-secondary text-xs font-black uppercase tracking-widest flex items-center gap-2">
+        Size <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="px-5 py-2 rounded-full border border-secondary/40 bg-white/5 text-white/80 text-xs font-black uppercase tracking-widest flex items-center gap-2">
+        Price <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<main class="relative z-10 px-6 pb-32 space-y-8 mt-4">
+<div class="group relative bg-surface/40 rounded-3xl overflow-hidden border border-white/10 neon-glow-card">
+<div class="h-64 relative">
+<img alt="Sunset Seeker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRsE1-o0ifsrSskuTVUD3mTvsw3123ldun2BWN3LdNdWruH_0TH2dr9EnwQtLwQRnTY8uSVxcZtoWqN1i56MG99yC63i3okc_HcvRXheqnW-9plc1v63xiWy1KJ76xQ2CHem4TmDHMEfetz6dWdfD03d8iFBcQ2BHoYEDSfyeh1z5Ah4gGbKpIn_aNPbvGKR7rFSwkcw9CT4TGtJBGmNUVM4rGzLms-n2pTPJL3_3vALNFSW8F-gXBr2zlHp5JR28YYQzDoQopA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Trending</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold tracking-tight mb-1">Sunset Seeker</h3>
+<p class="text-secondary text-[11px] font-bold uppercase tracking-widest">Van Dutch Premium</p>
+</div>
+<div class="text-right">
+<span class="text-primary text-2xl font-black italic">$1,200</span>
+<span class="text-gray-400 text-[10px] block uppercase font-bold">Per Hour</span>
+</div>
+</div>
+<div class="flex items-center gap-6 border-t border-white/5 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">straighten</span>
+<span class="text-xs font-medium text-gray-300">80ft</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">group</span>
+<span class="text-xs font-medium text-gray-300">12 Guests</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">anchor</span>
+<span class="text-xs font-medium text-gray-300">Pro Crew</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface/40 rounded-3xl overflow-hidden border border-white/10 neon-glow-card">
+<div class="h-64 relative">
+<img alt="Ocean Oasis" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXYHTKPuaOWQmuZn7oPKy0cN8nAHlPzhn8lyClP5q8QdzFE3a4au05d_1YWx_mCDgb1aOtHrS7nWKLpA6NqlqIWu8t6wYfPnC_gn3yhrMP_1t3QnPJLTqLf5BX2yekJBx4tg6P5snor9LCYpe5uK8JH7GSqOlW6eSrXiOEzjO0Ve71_hi7Be6SLFbesRHwGZAI5Vbmx1uuRgeHgbUqalj0i5Qk0qllzZMpC_BmpXfTPCEWBHS6aDLZTFanBNEEAeTgLdneJSRm4g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold tracking-tight mb-1">Ocean Oasis</h3>
+<p class="text-secondary text-[11px] font-bold uppercase tracking-widest">Lagoon Luxury</p>
+</div>
+<div class="text-right">
+<span class="text-primary text-2xl font-black italic">$850</span>
+<span class="text-gray-400 text-[10px] block uppercase font-bold">Per Hour</span>
+</div>
+</div>
+<div class="flex items-center gap-6 border-t border-white/5 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">straighten</span>
+<span class="text-xs font-medium text-gray-300">65ft</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">group</span>
+<span class="text-xs font-medium text-gray-300">10 Guests</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">water_lux</span>
+<span class="text-xs font-medium text-gray-300">Jacuzzi</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface/40 rounded-3xl overflow-hidden border border-white/10 neon-glow-card opacity-90">
+<div class="h-64 relative">
+<img alt="Neon Wave" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuEclvVnvKZGz-QjuI4C22JAPFtd7Z1NXH0_eOVGKcSG4iiexXWyRMRFqIB7aB9GYaTL7kBWspQd9COILmZ6cmEUWRhnDPuGoEkTNe0CCS8H_l2EbmS-ODFR14bLLdnr8QlfkcOIO84BqmPOnrPCU_rT25XGnB-UzBD1_LOzaMAWET5lx3GxU3fhv1m_Rayunus8bSNLJx_GvIhHBBGDTeII2un1RH2eqyALUS127bDs_WNlu04wwjVVtGSN5E2X6e3qkRsjIDyg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold tracking-tight mb-1">Neon Wave</h3>
+<p class="text-secondary text-[11px] font-bold uppercase tracking-widest">Sport Cruiser</p>
+</div>
+<div class="text-right">
+<span class="text-primary text-2xl font-black italic">$950</span>
+<span class="text-gray-400 text-[10px] block uppercase font-bold">Per Hour</span>
+</div>
+</div>
+<div class="flex items-center gap-6 border-t border-white/5 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">straighten</span>
+<span class="text-xs font-medium text-gray-300">55ft</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">group</span>
+<span class="text-xs font-medium text-gray-300">8 Guests</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">speed</span>
+<span class="text-xs font-medium text-gray-300">Fast</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-background-dark/95 backdrop-blur-2xl border-t border-white/5 flex items-center justify-around px-6 z-50">
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[28px] drop-shadow-[0_0_8px_rgba(255,0,255,0.8)]">directions_boat</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Fleet</span>
+</button>
+<button class="size-14 bg-primary rounded-full -mt-10 border-4 border-[#0a0a1a] flex items-center justify-center neon-glow-pink">
+<span class="material-symbols-outlined text-white text-[32px]">search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">confirmation_number</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Trips</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined text-[28px]">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</button>
+</nav>
+
+</body></html>

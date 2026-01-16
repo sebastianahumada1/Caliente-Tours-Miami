@@ -1,0 +1,44 @@
+import SunsetBlur from '@/components/SunsetBlur';
+import Header from '@/components/Header';
+import LiveStatus from '@/components/LiveStatus';
+import CollectionSection from '@/components/CollectionSection';
+import GuestStories from '@/components/GuestStories';
+import { getAllBoats, getBoatsByCollection } from '@/lib/boats';
+
+export default async function Home() {
+  // Obtener botes por colección desde la base de datos
+  const [pinkCollection, flybridgeBoats, allBoats] = await Promise.all([
+    getBoatsByCollection('PINK COLLECTION'),
+    getBoatsByCollection('FLYBRIDGE'),
+    getBoatsByCollection('BOATS'),
+  ]);
+
+  return (
+    <>
+      <SunsetBlur />
+      <Header />
+      <main className="relative z-10 px-4 pb-32">
+        <LiveStatus />
+        <CollectionSection 
+          title="PINK COLLECTION" 
+          emoji="🩷" 
+          boats={pinkCollection} 
+          maxBoats={3}
+        />
+        <CollectionSection 
+          title="FLYBRIDGE" 
+          emoji="❤️" 
+          boats={flybridgeBoats} 
+          maxBoats={3}
+        />
+        <CollectionSection 
+          title="BOATS" 
+          emoji="💙" 
+          boats={allBoats} 
+          maxBoats={3}
+        />
+        <GuestStories />
+      </main>
+    </>
+  );
+}
