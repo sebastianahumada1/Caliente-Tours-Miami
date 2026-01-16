@@ -201,7 +201,7 @@ export default function NewBoatPage() {
             <div className="space-y-3 sm:space-y-4">
               <div>
                 <label htmlFor="title" className="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
-                  Título del Bote * <span className="text-[10px] sm:text-xs text-gray-500">(ej: 26' 🩷 PINK BAYLINER)</span>
+                  Título del Bote * <span className="text-[10px] sm:text-xs text-gray-500">(ej: 26&apos; 🩷 PINK BAYLINER)</span>
                 </label>
                 <input
                   type="text"
