@@ -15,8 +15,15 @@ export function getStorageImageUrl(path: string): string {
     return path;
   }
   
+  // Limpiar el prefijo "boat-images/" si existe (por compatibilidad con datos antiguos)
+  // Las rutas deben ser relativas al bucket: "26-pink-bayliner/main.jpg"
+  let cleanPath = path;
+  if (cleanPath.startsWith('boat-images/')) {
+    cleanPath = cleanPath.replace(/^boat-images\//, '');
+  }
+  
   // Si es una ruta de Storage, generar la URL pública
-  const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(cleanPath);
   return data.publicUrl;
 }
 

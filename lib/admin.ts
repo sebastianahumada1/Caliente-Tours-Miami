@@ -82,6 +82,7 @@ export async function insertBoat(
 
 /**
  * Sube las imágenes de un bote a Storage y retorna las rutas
+ * Las rutas retornadas son relativas al bucket (sin prefijo boat-images/)
  */
 export async function uploadBoatImages(
   title: string,
@@ -93,6 +94,7 @@ export async function uploadBoatImages(
     const bucket = 'boat-images';
 
     // Subir imagen principal
+    // La ruta es relativa al bucket: "26-pink-bayliner/main.jpg"
     const mainImagePath = `${folderName}/main.jpg`;
     const { error: mainError } = await supabase.storage
       .from(bucket)
@@ -102,12 +104,16 @@ export async function uploadBoatImages(
       });
 
     if (mainError) {
+      console.error('[Admin] Error uploading main image:', mainError);
       return { success: false, error: `Error uploading main image: ${mainError.message}` };
     }
+
+    console.log('[Admin] Main image uploaded to:', mainImagePath);
 
     // Subir imágenes adicionales
     const imagePaths: string[] = [];
     for (let i = 0; i < additionalImages.length; i++) {
+      // La ruta es relativa al bucket: "26-pink-bayliner/1.jpg"
       const imagePath = `${folderName}/${i + 1}.jpg`;
       const { error: imageError } = await supabase.storage
         .from(bucket)
@@ -117,22 +123,24 @@ export async function uploadBoatImages(
         });
 
       if (imageError) {
-        console.error(`Error uploading image ${i + 1}:`, imageError);
+        console.error(`[Admin] Error uploading image ${i + 1}:`, imageError);
         continue;
       }
 
-      imagePaths.push(`boat-images/${imagePath}`);
+      console.log(`[Admin] Additional image ${i + 1} uploaded to:`, imagePath);
+      // Guardar la ruta relativa (sin prefijo boat-images/)
+      imagePaths.push(imagePath);
     }
 
-    const fullMainImagePath = `boat-images/${mainImagePath}`;
-    
+    // Retornar rutas relativas al bucket (sin prefijo boat-images/)
+    // Estas rutas se guardan así en la base de datos
     return {
       success: true,
-      mainImagePath: fullMainImagePath,
-      imagePaths: imagePaths.length > 0 ? imagePaths : [fullMainImagePath],
+      mainImagePath: mainImagePath, // "26-pink-bayliner/main.jpg"
+      imagePaths: imagePaths.length > 0 ? imagePaths : [mainImagePath],
     };
   } catch (error: any) {
-    console.error('Error in uploadBoatImages:', error);
+    console.error('[Admin] Error in uploadBoatImages:', error);
     return { success: false, error: error.message || 'Unknown error' };
   }
 }

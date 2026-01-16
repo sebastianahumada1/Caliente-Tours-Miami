@@ -35,7 +35,7 @@ export default function CollectionSection({
         </Link>
       </div>
       <div className="flex gap-5 overflow-x-auto pb-6 scrollbar-hide snap-x px-2">
-        {collectionBoats.map((boat, index) => (
+        {collectionBoats.map((boat) => (
           <FleetCard
             key={boat.id}
             id={boat.id}
@@ -44,8 +44,8 @@ export default function CollectionSection({
             type={`${boat.length} ${boat.category}`}
             price={boat.price}
             image={boat.mainImage || '/images/placeholder.jpg'}
-            isHotDeal={index === 0}
-            opacity={index > 0 ? 0.7 : 1}
+            isHotDeal={false}
+            opacity={1}
           />
         ))}
       </div>
