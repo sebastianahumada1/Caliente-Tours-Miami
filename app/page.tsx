@@ -27,19 +27,16 @@ export default async function Home() {
           title="PINK COLLECTION" 
           emoji="🩷" 
           boats={pinkCollection} 
-          maxBoats={3}
         />
         <CollectionSection 
           title="FLYBRIDGE" 
           emoji="❤️" 
           boats={flybridgeBoats} 
-          maxBoats={3}
         />
         <CollectionSection 
           title="BOATS" 
           emoji="💙" 
           boats={allBoats} 
-          maxBoats={3}
         />
         <GuestStories />
       </main>

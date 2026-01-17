@@ -13,9 +13,9 @@ export default function CollectionSection({
   title, 
   emoji, 
   boats, 
-  maxBoats = 3 
+  maxBoats 
 }: CollectionSectionProps) {
-  const collectionBoats = boats.slice(0, maxBoats);
+  const collectionBoats = maxBoats ? boats.slice(0, maxBoats) : boats;
 
   if (collectionBoats.length === 0) {
     return null; // No mostrar si no hay botes
