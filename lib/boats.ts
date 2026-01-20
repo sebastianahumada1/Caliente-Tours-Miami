@@ -1,22 +1,46 @@
 import { supabase } from './supabase';
 import { DatabaseBoat, Boat, mapDatabaseBoatToBoat } from '@/types/database';
 
-// Obtener todos los botes desde Supabase
+// Obtener todos los botes desde Supabase (sin límite)
 export async function getAllBoats(): Promise<Boat[]> {
   try {
     console.log('[Boats] Fetching all boats from Supabase...');
-    const { data, error } = await supabase
-      .from('boats')
-      .select('*')
-      .order('created_at', { ascending: false });
+    
+    // Supabase tiene un límite por defecto de 1000 registros
+    // Usamos range() para obtener todos los registros en lotes si es necesario
+    let allData: DatabaseBoat[] = [];
+    let from = 0;
+    const batchSize = 1000;
+    let hasMore = true;
 
-    if (error) {
-      console.error('[Boats] Error fetching boats:', error);
-      return [];
+    while (hasMore) {
+      const { data, error } = await supabase
+        .from('boats')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .range(from, from + batchSize - 1);
+
+      if (error) {
+        console.error('[Boats] Error fetching boats:', error);
+        break;
+      }
+
+      if (!data || data.length === 0) {
+        hasMore = false;
+      } else {
+        allData = [...allData, ...data];
+        
+        // Si obtenemos menos de batchSize, significa que no hay más registros
+        if (data.length < batchSize) {
+          hasMore = false;
+        } else {
+          from += batchSize;
+        }
+      }
     }
 
-    const boats = (data || []).map(mapDatabaseBoatToBoat);
-    console.log(`[Boats] Fetched ${boats.length} boats`);
+    const boats = allData.map(mapDatabaseBoatToBoat);
+    console.log(`[Boats] Fetched ${boats.length} boats (all records)`);
     return boats;
   } catch (error) {
     console.error('[Boats] Error in getAllBoats:', error);

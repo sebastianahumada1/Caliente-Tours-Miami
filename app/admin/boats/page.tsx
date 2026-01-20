@@ -2,6 +2,10 @@ import Link from 'next/link';
 import { getAllBoats } from '@/lib/boats';
 import Image from 'next/image';
 
+// Forzar renderizado dinámico (no usar cache estático)
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function BoatsListPage() {
   const boats = await getAllBoats();
 
